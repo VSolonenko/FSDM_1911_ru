@@ -1,0 +1,7 @@
+D:\private\ITStep\ADO.Net\TestSolution\FSDM_1911_ru\ADO.NET\DisconnectedMode\bin\Debug\DisconnectedMode.exe.config
+D:\private\ITStep\ADO.Net\TestSolution\FSDM_1911_ru\ADO.NET\DisconnectedMode\bin\Debug\DisconnectedMode.exe
+D:\private\ITStep\ADO.Net\TestSolution\FSDM_1911_ru\ADO.NET\DisconnectedMode\bin\Debug\DisconnectedMode.pdb
+D:\private\ITStep\ADO.Net\TestSolution\FSDM_1911_ru\ADO.NET\DisconnectedMode\obj\Debug\DisconnectedMode.csprojAssemblyReference.cache
+D:\private\ITStep\ADO.Net\TestSolution\FSDM_1911_ru\ADO.NET\DisconnectedMode\obj\Debug\DisconnectedMode.csproj.CoreCompileInputs.cache
+D:\private\ITStep\ADO.Net\TestSolution\FSDM_1911_ru\ADO.NET\DisconnectedMode\obj\Debug\DisconnectedMode.exe
+D:\private\ITStep\ADO.Net\TestSolution\FSDM_1911_ru\ADO.NET\DisconnectedMode\obj\Debug\DisconnectedMode.pdb

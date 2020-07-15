@@ -137,7 +137,6 @@ namespace ConsoleApp1
 
             return connection.OpenAsync().ContinueWith(_ =>
             {
-                completed = true;
                 var readCommand = connection.CreateCommand();
                 readCommand.CommandText = expression;
                 readCommand.ExecuteReaderAsync().ContinueWith(t =>
@@ -152,6 +151,7 @@ namespace ConsoleApp1
                                 Name = t.Result.GetString(1)
                             });
                         });
+
                         //names.Add(new NameViewModel
                         //{
                         //    Id = t.Result.GetInt32(0),
@@ -190,15 +190,6 @@ namespace ConsoleApp1
         {
             return ClearAsync().ContinueWith(_ => FillAsync(10000).ContinueWith(__ => ReadAsync(names)));
         }
-
-        private bool completed = false;
-
-        private void SomeWork()
-        {
-            while (!completed)
-            {
-                Console.WriteLine("Some work...");
-            }
-        }
+    
     }
 }
