@@ -1,0 +1,70 @@
+﻿<Window x:Class="ClientsApp.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientsApp.Wpf"
+        xmlns:viewModels="clr-namespace:ClientsApp.Wpf.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}">
+    <Window.Resources>
+        <Style x:Key="SelectedItemHandlerButton" TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedItem, ElementName=list}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="list" ItemsSource="{Binding Data}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Row.ItemArray[1], Mode=TwoWay}" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Row.ItemArray[2], Mode=TwoWay}" Header="LastName"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Row.ItemArray[3], Mode=TwoWay}" Header="Phone"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Add"/>
+            <Button Content="Remove" Style="{StaticResource SelectedItemHandlerButton}" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedItem, ElementName=list}"/>
+            <Button Content="Edit"  Style="{StaticResource SelectedItemHandlerButton}"  Command="{Binding EditCommand}" CommandParameter="{Binding SelectedItem, ElementName=list}"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="0, 0, 0, 10" DataContext="{Binding CurrentClient, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition MinWidth="100" MaxWidth="100"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Name"/>
+            <TextBlock Grid.Row="2" Text="LastName"/>
+            <TextBlock Grid.Row="4" Text="Phone"/>
+
+            <TextBox Text="{Binding Name}" Grid.Column="2"/>
+            <TextBox Text="{Binding LastName}" Grid.Row="2" Grid.Column="2"/>
+            <TextBox Text="{Binding Phone}" Grid.Row="4" Grid.Column="2"/>
+
+            <Button Grid.Row="6" Content="Apply" Command="{Binding ApplyCommand}"/>
+            <Button Grid.Row="6" Content="Discard" Command="{Binding DiscardCommand}" Grid.Column="2"/>
+        </Grid>
+    </Grid>
+</Window>

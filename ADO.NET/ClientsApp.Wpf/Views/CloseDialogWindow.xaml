@@ -1,0 +1,28 @@
+﻿<Window x:Class="ClientsApp.Wpf.Views.CloseDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientsApp.Wpf.Views"
+        mc:Ignorable="d"
+        Title="CloseDialogWindow" Height="450" Width="800" AllowsTransparency="True" WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterOwner">
+    <Grid Background="#FF000000" >
+        <Grid VerticalAlignment="Center" Margin="20, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Are you want, save changes?" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="White" FontSize="32" Margin="0, 10"/>
+
+            <Button Content="Save" Command="{Binding SaveCommand}" Grid.Row="1"/>
+            <Button Content="Discard"  Command="{Binding DiscardCommand}" Grid.Row="1" Grid.Column="2"/>
+        </Grid>
+    </Grid>
+</Window>
